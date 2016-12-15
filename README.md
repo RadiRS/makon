@@ -1,4 +1,4 @@
-# Prjoct UAS PWL
+# Projoct UAS PWL
 - Radi
 - Ella
 - Uun
