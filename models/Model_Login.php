@@ -10,20 +10,22 @@ class Model_login extends CI_model {
 	public function getlogin($u,$p)
     {
         $pwd = md5($p);
-        $this->db->where('nama_user',$u);
-        $this->db->where('password_user',$pwd);
+        $this->db->where('USERNAME',$u);
+        $this->db->where('PASSWORD',$pwd);
         $query = $this->db->get('TBL_USER');
         if ($query->num_rows()>0) {
             foreach ($query->result() as $row) {
-                $sess = array('nama_user' => $row->nama_user,
-                              'email_user' => $row->email_user,
-                              'hakakses_user' => $row->hakakses_user );
+                $sess = array('nama_lengkap_user' => $row->NAMA_LENGKAP_USER,
+                              'username' => $row->USERNAME,
+                              'email_user' => $row->EMAIL_USER,
+                              'hakakses_user' => $row->HAKAKSES_USER );
                 $this->session->set_userdata($sess);
-                redirect('home');
+                redirect('home');                
             }
+            
         }
         else {
-            $this->session->set_flashdata('info','Maaf nama user atau password salah');
+            $this->session->set_flashdata('info','Maaf username atau password salah');
             redirect('login');
         }
 
