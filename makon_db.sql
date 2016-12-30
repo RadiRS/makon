@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Dec 29, 2016 at 09:56 
+-- Generation Time: Dec 30, 2016 at 09:57 
 -- Server version: 5.6.25
 -- PHP Version: 5.6.11
 
@@ -61,14 +61,14 @@ CREATE TABLE IF NOT EXISTS `TBL_KEUANGAN` (
   `ID_KEUANGAN` int(11) NOT NULL,
   `JENIS_KEUANGAN` varchar(15) DEFAULT NULL,
   `BIAYA` bigint(20) DEFAULT NULL,
-  `TBL` date DEFAULT NULL
+  `TGL` date DEFAULT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `TBL_KEUANGAN`
 --
 
-INSERT INTO `TBL_KEUANGAN` (`ID_KEUANGAN`, `JENIS_KEUANGAN`, `BIAYA`, `TBL`) VALUES
+INSERT INTO `TBL_KEUANGAN` (`ID_KEUANGAN`, `JENIS_KEUANGAN`, `BIAYA`, `TGL`) VALUES
 (1, 'pemasukan', 10000, '2016-12-05');
 
 -- --------------------------------------------------------
@@ -91,18 +91,22 @@ CREATE TABLE IF NOT EXISTS `TBL_TUGAS` (
 
 CREATE TABLE IF NOT EXISTS `TBL_USER` (
   `ID_USER` int(11) NOT NULL,
-  `NAMA_USER` varchar(250) DEFAULT NULL,
+  `NAMA_LENGKAP_USER` longtext,
   `EMAIL_USER` varchar(100) DEFAULT NULL,
-  `PASSWORD_USER` varchar(250) DEFAULT NULL,
+  `USERNAME` varchar(250) NOT NULL,
+  `PASSWORD` varchar(250) DEFAULT NULL,
   `HAKAKSES_USER` varchar(10) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `TBL_USER`
 --
 
-INSERT INTO `TBL_USER` (`ID_USER`, `NAMA_USER`, `EMAIL_USER`, `PASSWORD_USER`, `HAKAKSES_USER`) VALUES
-(1, 'Radi', 'radi@gmail.com', 'radi', 'admin');
+INSERT INTO `TBL_USER` (`ID_USER`, `NAMA_LENGKAP_USER`, `EMAIL_USER`, `USERNAME`, `PASSWORD`, `HAKAKSES_USER`) VALUES
+(1, 'Radi Rusadi', 'radi@gmail.com', 'radi', '21232f297a57a5a743894a0e4a801fc3', 'admin'),
+(2, 'admin', 'admin@gmail.com', 'admin', '21232f297a57a5a743894a0e4a801fc3', 'admin'),
+(10, 'Ella Ayu', 'ella@gmail.com', 'ella', 'ec5e1e94c042dda33822701a45eb5e30', 'Admin'),
+(11, 'Uun Setya', 'uun@gmail.com', 'uun', '923fbf40785ce02b72f85ab1d075c24d', 'Admin');
 
 --
 -- Indexes for dumped tables
@@ -158,7 +162,7 @@ ALTER TABLE `TBL_TUGAS`
 -- AUTO_INCREMENT for table `TBL_USER`
 --
 ALTER TABLE `TBL_USER`
-  MODIFY `ID_USER` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `ID_USER` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=12;
 --
 -- Constraints for dumped tables
 --
